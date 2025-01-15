@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import db from "./database.js";
+
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import session from "express-session";
