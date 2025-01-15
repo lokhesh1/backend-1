@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors({
-  origin:'https://lokhesh1.github.io/frontend-1',credentials:true
+  origin:'https://lokhesh1.github.io/',credentials:true
 }));
 app.use(cookieParser());
 app.use(session({
@@ -31,27 +31,27 @@ app.use(session({
     maxAge:1000*60*24*24
   }
 }))
-app.get('/watches',async(req,res)=>{
+app.get('/frontend-1/watches',async(req,res)=>{
   const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
   res.json(products);
 });
-app.get('/perfumes',async(req,res)=>{
+app.get('/frontend-1/perfumes',async(req,res)=>{
   const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
   res.json(products);
 });
-app.get('/clothing',async(req,res)=>{
+app.get('/frontend-1/clothing',async(req,res)=>{
   const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
   res.json(products);
 });
-app.get('/footwear',async(req,res)=>{
+app.get('/frontend-1/footwear',async(req,res)=>{
   const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
   res.json(products);
 });
-app.get('/eyewear',async(req,res)=>{
+app.get('/frontend-1/eyewear',async(req,res)=>{
   const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'eyewear.json'), 'utf-8'));
   res.json(products);
 });
-app.get('/jwells',async(req,res)=>{
+app.get('/frontend-1/jwells',async(req,res)=>{
   const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
   res.json(products);
 });
