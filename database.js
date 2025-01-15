@@ -5,11 +5,12 @@ dotenv.config();
 import { response } from "express";
 import pg from "pg";
 const db=new pg.Client({
-    user:"postgres",
-    hostname:"localhost",
-    password:process.env.database_pass,
-    database:"eshop",
-    port:5432
+    user:process.env.PG_user,
+    hostname:process.env.PG_hostname,
+    password:process.env.PG_password,
+    database:process.env.PG_database,
+    port:process.env.PG_port
+    
 });
 db.connect();
 
