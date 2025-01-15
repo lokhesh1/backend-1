@@ -5,10 +5,14 @@ import db from "./database.js";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import session from "express-session";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const port = 8080;
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(bodyParser.json());
@@ -28,57 +32,31 @@ app.use(session({
   }
 }))
 app.get('/watches',async(req,res)=>{
-  const result=await db.query("SELECT * FROM products");
-  res.json(result.rows);
+  const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
+  res.json(products);
 });
 app.get('/perfumes',async(req,res)=>{
-  const result=await db.query("SELECT * FROM products");
-  res.json(result.rows);
+  const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
+  res.json(products);
 });
 app.get('/clothing',async(req,res)=>{
-  const result=await db.query("SELECT * FROM products");
-  res.json(result.rows);
+  const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
+  res.json(products);
 });
 app.get('/footwear',async(req,res)=>{
-  const result=await db.query("SELECT * FROM products");
-  res.json(result.rows);
+  const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
+  res.json(products);
 });
 app.get('/eyewear',async(req,res)=>{
-  const result=await db.query("SELECT * FROM eyewear");
-  res.json(result.rows);
+  const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'eyewear.json'), 'utf-8'));
+  res.json(products);
 });
 app.get('/jwells',async(req,res)=>{
-  const result=await db.query("SELECT * FROM products");
-  res.json(result.rows);
+  const products =await JSON.parse(fs.readFileSync(path.join(__dirname, 'product.json'), 'utf-8'));
+  res.json(products);
 });
     
  
-
-app.post("/login", async (req, res) => {
-    const email=req.body.email;
-    const password=req.body.password;
-    
-     
-    try{
-      req.session.logged=true;
-    const check=await db.query("SELECT * FROM users WHERE email=$1",
-     [email,]);
-     if (check.rows.length > 0) {
-      return res.json({login:true});
-    }else{
-    const result=await db.query(
-        "INSERT INTO users (email,password) VALUES ($1,$2)",
-        [email,password]
-      );
-      console.log(result);}
-    }
-    catch(err){
-        console.log(err);
-     }
-});
-
-
-
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
