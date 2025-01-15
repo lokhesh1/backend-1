@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 
 const app = express();
-const port = 8080;
+const port = 10000;
 
 app.use(morgan('dev'));
 app.use(express.json());
