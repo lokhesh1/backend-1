@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors({
-  origin:'https://lokhesh1.github.io/',credentials:true
+  origin:'https://lokhesh1.github.io',credentials:true
 }));
 app.use(cookieParser());
 app.use(session({
